@@ -1,6 +1,7 @@
 package com.youssef.cloath_store;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.os.Bundle;
 
@@ -13,5 +14,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.actionbar));
+        getWindow().setStatusBarColor(ContextCompat.getColor(this,android.R.color.transparent));
+        getWindow().setBackgroundDrawable(getDrawable(R.drawable.actionbar));
     }
 }

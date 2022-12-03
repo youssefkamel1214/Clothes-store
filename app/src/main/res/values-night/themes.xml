@@ -6,8 +6,9 @@
         <item name="colorPrimaryVariant">@color/dark0_blue</item>
         <item name="colorOnPrimary">@color/dark2_blue</item>
         <item name="backgroundColor">@color/dark0_blue</item>
-        <item name="buttonb1">#7E42C1</item>
-        <item name="buttonb2">#5B3DDD</item>
+        <item name="buttonb1">#FF3C096C</item>
+        <item name="buttonb2">#023e8a</item>
+
 
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
