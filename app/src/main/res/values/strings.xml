@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">Cloath_store</string>
-    <string name="name">Name</string>
+    <string name="app_name">Cloath_store</string><string name="name">Name</string>
     <string name="get_on_board">Get on Board</string>
     <string name="terms">By Creating an account ,you agree to our Term and Uses and Privacy policy</string>
     <string name="Phone_text">Phone number</string>
@@ -18,5 +17,6 @@
     <string name="gallery">Gallery</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
 
 </resources>
