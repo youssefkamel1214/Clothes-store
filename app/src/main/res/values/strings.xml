@@ -7,7 +7,9 @@
     <string name="email">Email</string>
     <string name="i_am_already_a_ember">I am already a member</string>
     <string name="date_of_birth">Date_of_Birth</string>
-    <string name="create_new_accont">Create new accont</string>
+    <string name="create_new_accont">SIGN UP</string>
     <string name="sign_in">Sign in</string>
+    <string name="remeber_me">Remeber me</string>
+    <string name="forget_password">Forget password</string>
 
 </resources>
