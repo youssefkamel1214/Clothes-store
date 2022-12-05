@@ -2,13 +2,18 @@ package com.youssef.cloath_store;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
-public class Product_DescriptionActivity extends AppCompatActivity {
+import com.youssef.cloath_store.databinding.ActivityProductDescriptionBinding;
 
+public class Product_DescriptionActivity extends AppCompatActivity {
+    ActivityProductDescriptionBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product_description);
+        binding=ActivityProductDescriptionBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        binding.text.setText(Integer.toString(getIntent().getIntExtra("id", -1)));
     }
 }
