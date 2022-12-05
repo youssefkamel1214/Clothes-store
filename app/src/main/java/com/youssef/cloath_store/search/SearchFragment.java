@@ -1,6 +1,7 @@
 package com.youssef.cloath_store.search;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
+import com.youssef.cloath_store.Product_DescriptionActivity;
 import com.youssef.cloath_store.databinding.FragmentSearchBinding;
 
 /**
@@ -48,12 +50,15 @@ public class SearchFragment extends Fragment {
     }
     ActivityResultLauncher<ScanOptions>barLauncher=registerForActivityResult(new ScanContract(),result->{
           if(result.getContents()!=null){
-              AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
+              /*AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
               builder.setTitle("bar code");
               builder.setMessage(result.getContents());
               builder.setPositiveButton("ok", (dialogInterface, i) -> {
                    dialogInterface.dismiss();
-              }).show();
+              }).show();*/
+              Intent i = new Intent(getActivity(), Product_DescriptionActivity.class);
+              i.putExtra("id",Integer.parseInt(result.getContents()));
+              startActivity(i);
           }
     });
 
