@@ -1,4 +1,4 @@
-package com.youssef.cloath_store;
+package com.youssef.cloath_store.authintication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import com.youssef.cloath_store.Constants;
+import com.youssef.cloath_store.MainActivity;
+import com.youssef.cloath_store.R;
 import com.youssef.cloath_store.databinding.ActivitySigninBinding;
 
 import java.util.Objects;
@@ -37,7 +40,7 @@ public class SigninActivity extends AppCompatActivity {
     }
 
     private void movetohome(int id) {
-            Intent i=new Intent(SigninActivity.this,MainActivity.class);
+            Intent i=new Intent(SigninActivity.this, MainActivity.class);
             i.putExtra("id",id);
             startActivity(i);
             finish();

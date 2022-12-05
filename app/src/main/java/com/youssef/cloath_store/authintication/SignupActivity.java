@@ -1,9 +1,11 @@
-package com.youssef.cloath_store;
+package com.youssef.cloath_store.authintication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.os.Bundle;
+
+import com.youssef.cloath_store.R;
 
 import java.util.Objects;
 

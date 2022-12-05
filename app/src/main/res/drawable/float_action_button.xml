@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape  android:shape="oval" xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient android:angle="0"
-        android:startColor="?attr/buttonb1"
-        android:endColor="?attr/buttonb2"/>
+<shape android:shape="oval" xmlns:android="http://schemas.android.com/apk/res/android">
+
+            <gradient android:angle="0"
+                android:startColor="?attr/buttonb1"
+                android:endColor="?attr/buttonb2"/>
+
 </shape>

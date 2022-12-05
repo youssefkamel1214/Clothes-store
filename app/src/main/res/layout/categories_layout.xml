@@ -19,7 +19,6 @@
             android:id="@+id/category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CategoryName"
             android:textAlignment="center"
             android:textColor="?attr/txtcategory"
             android:textSize="20dp"
@@ -28,8 +27,8 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="?attr/editTextColor">
-        </TextView>
+            android:background="?attr/backgroundColor"
+            />
 
         <ImageView
             android:id="@+id/categoryimage"
@@ -40,8 +39,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/category">
-        </ImageView>
+            app:layout_constraintTop_toBottomOf="@+id/category" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

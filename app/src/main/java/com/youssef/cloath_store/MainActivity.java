@@ -3,14 +3,14 @@ package com.youssef.cloath_store;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.youssef.cloath_store.card.Shopping_cart_Fragment;
 import com.youssef.cloath_store.databinding.ActivityMainBinding;
-
-import java.util.ArrayList;
+import com.youssef.cloath_store.home.HomeFragment;
+import com.youssef.cloath_store.search.SearchFragment;
+import com.youssef.cloath_store.profile.UserFragment;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.actionbar));
         getWindow().setStatusBarColor(ContextCompat.getColor(this,android.R.color.transparent));
         getWindow().setBackgroundDrawable(getDrawable(R.drawable.actionbar));
+
         binding.bottomnav.setSelectedItemId(R.id.home);
         binding.bottomnav.setOnItemSelectedListener(item -> {
             Fragment F = null;

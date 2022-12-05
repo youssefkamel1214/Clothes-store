@@ -1,4 +1,4 @@
-package com.youssef.cloath_store.ViewHolder;
+package com.youssef.cloath_store.models;
 
 public class Categories {
     String  Title;

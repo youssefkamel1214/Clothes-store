@@ -1,4 +1,4 @@
-package com.youssef.cloath_store;
+package com.youssef.cloath_store.home;
 
 import android.os.Bundle;
 
@@ -10,8 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.youssef.cloath_store.ViewHolder.Categories;
-import com.youssef.cloath_store.ViewHolder.CategoryAdapter;
+import com.youssef.cloath_store.product.ProductFragment;
+import com.youssef.cloath_store.R;
+import com.youssef.cloath_store.models.Categories;
+import com.youssef.cloath_store.Controllers.CategoryAdapter;
 
 import java.util.ArrayList;
 
@@ -39,10 +41,19 @@ public class HomeFragment extends Fragment {
         for(int i = 0; i < 4;i++)
             categories.add(new Categories(Cat[i],images[i]));
 
-        CAdapter = new CategoryAdapter(getContext(), categories);
+        CAdapter = new CategoryAdapter(obj -> movetonewfragmentcatgory(obj), categories);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(CAdapter);
         // Inflate the layout for this fragment
         return V;
+    }
+
+    private void movetonewfragmentcatgory(Categories category) {
+        ProductFragment fragment=new ProductFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("type", category.getTitle());
+        fragment.setArguments(bundle);
+        getActivity().getSupportFragmentManager().beginTransaction().
+                replace(R.id.fragment_container_view_tag,fragment).addToBackStack(null).commit();
     }
 }

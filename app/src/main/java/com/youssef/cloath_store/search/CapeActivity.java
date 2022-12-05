@@ -1,4 +1,4 @@
-package com.youssef.cloath_store;
+package com.youssef.cloath_store.search;
 
 import com.journeyapps.barcodescanner.CaptureActivity;
 
