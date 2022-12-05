@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.youssef.cloath_store.R;
@@ -20,11 +21,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
         TextView title;
         ImageView img;
+        ConstraintLayout C;
 
         public ViewHolder(View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.category);
             img = itemView.findViewById(R.id.categoryimage);
+            C = itemView.findViewById(R.id.categories_rectangle);
         }
     }
 
@@ -48,7 +51,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         Categories G = categoriesList.get(position);
         holder.title.setText(G.getTitle());
         holder.img.setImageDrawable(holder.img.getContext().getDrawable(G.getImage()));
-        holder.img.setOnClickListener(view -> callback.call(G));
+        holder.C.setOnClickListener(view -> callback.call(G));
     }
 
     @Override

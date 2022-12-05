@@ -1,8 +1,8 @@
 package com.youssef.cloath_store.models;
 
 public class Categories {
-    String  Title;
-    int  image;
+    private String  Title;
+    private  int  image;
 
     public Categories(String title, int image) {
         Title = title;

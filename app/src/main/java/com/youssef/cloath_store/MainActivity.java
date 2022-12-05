@@ -5,10 +5,12 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.youssef.cloath_store.card.Shopping_cart_Fragment;
 import com.youssef.cloath_store.databinding.ActivityMainBinding;
 import com.youssef.cloath_store.home.HomeFragment;
+import com.youssef.cloath_store.product.ProductFragment;
 import com.youssef.cloath_store.search.SearchFragment;
 import com.youssef.cloath_store.profile.UserFragment;
 
@@ -23,6 +25,12 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setStatusBarColor(ContextCompat.getColor(this,android.R.color.transparent));
         getWindow().setBackgroundDrawable(getDrawable(R.drawable.actionbar));
 
+        getSupportFragmentManager().addOnBackStackChangedListener(() -> {
+            if(getSupportFragmentManager().findFragmentById(R.id.fragment_container_view_tag) instanceof ProductFragment)
+                binding.bottomnav.setVisibility(View.GONE);
+            else
+                binding.bottomnav.setVisibility(View.VISIBLE);
+        });
         binding.bottomnav.setSelectedItemId(R.id.home);
         binding.bottomnav.setOnItemSelectedListener(item -> {
             Fragment F = null;
@@ -39,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.shopping_cart:
                     F = new Shopping_cart_Fragment();
                     break;
-
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_view_tag,F).commit();
             return true;
