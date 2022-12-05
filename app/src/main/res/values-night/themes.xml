@@ -7,7 +7,10 @@
         <item name="colorOnPrimary">@color/dark2_blue</item>
         <item name="backgroundColor">@color/dark0_blue</item>
         <item name="buttonb1">#7E42C1</item>
+        <item name="txtcategory">#000000</item>
         <item name="buttonb2">#5B3DDD</item>
+
+
 
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

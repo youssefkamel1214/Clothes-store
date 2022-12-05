@@ -7,6 +7,7 @@
         <item name="backgroundColor">@color/white</item>
         <item name="colorOnPrimary">@color/white_blue</item>
         <item name="buttonb1">#cbf3f0</item>
+        <item name="txtcategory">#ffffff</item>
         <item name="buttonb2">#2ec4b6</item>
 
         <!-- Secondary brand color. -->

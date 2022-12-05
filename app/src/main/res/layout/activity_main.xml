@@ -4,21 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <TextView
-            android:id="@+id/hello"
-            android:layout_width="wrap_content"
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomnav"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/rounded_corners"
+            android:elevation="3dp"
+            app:itemIconSize="@dimen/_20sdp"
+            app:itemIconTint="@drawable/item_select"
+            app:itemRippleColor="@android:color/transparent"
+            app:labelVisibilityMode="unlabeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:menu="@menu/nav_menu" />
+
+        <fragment
+            android:id="@+id/fragment_container_view_tag"
+            android:name="com.youssef.cloath_store.home.HomeFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            app:layout_constraintBottom_toTopOf="@id/bottomnav"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout="@layout/fragment_home" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
