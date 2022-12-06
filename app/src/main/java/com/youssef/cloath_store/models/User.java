@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.Insert;
 import androidx.room.PrimaryKey;
 import androidx.room.Query;
@@ -13,7 +14,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-@Entity
+@Entity(indices = {@Index(value = {"email","phone"},
+        unique = true)})
+
 public class User {
     @PrimaryKey(autoGenerate = true)
     private int uid;
@@ -32,6 +35,14 @@ public class User {
 
     @ColumnInfo(name = "DOB")
     private Calendar date;
+
+    public User(String name, String email, String pssword, String phone, Calendar date) {
+        this.name = name;
+        this.email = email;
+        this.pssword = pssword;
+        this.phone = phone;
+        this.date = date;
+    }
 
     public int getUid() {
         return uid;

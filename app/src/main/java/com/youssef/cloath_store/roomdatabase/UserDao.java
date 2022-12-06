@@ -30,6 +30,10 @@ public interface UserDao{
     @Query("SELECT * FROM user WHERE name LIKE :name LIMIT 1")
     User findById(String name);
 
+    @Query("SELECT uid FROM user WHERE email like :email AND password like :password")
+    int Login(String  email, String password);
+
     @Query("SELECT * FROM user")
     List<User> getAll();
+
 }
