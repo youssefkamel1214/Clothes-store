@@ -19,12 +19,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.actionbar));
         getWindow().setStatusBarColor(ContextCompat.getColor(this,android.R.color.transparent));
         getWindow().setBackgroundDrawable(getDrawable(R.drawable.actionbar));
 
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container_view_tag, new HomeFragment()).commit();
         getSupportFragmentManager().addOnBackStackChangedListener(() -> {
             if(getSupportFragmentManager().findFragmentById(R.id.fragment_container_view_tag) instanceof ProductFragment)
                 binding.bottomnav.setVisibility(View.GONE);

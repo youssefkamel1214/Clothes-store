@@ -24,16 +24,10 @@
                 android:name="android.app.lib_name"
                 android:value="" />
 
+
         </activity>
         <activity
             android:name=".Product_DescriptionActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Activities.Product_infoActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -77,6 +71,7 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+
         </activity>
         <activity
             android:name=".MainActivity"

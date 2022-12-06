@@ -5,21 +5,22 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.youssef.cloath_store.Activities.Product_infoActivity;
-import com.youssef.cloath_store.Controllers.Callback;
 import com.youssef.cloath_store.Controllers.ProductAdapter;
+import com.youssef.cloath_store.Product_DescriptionActivity;
 import com.youssef.cloath_store.R;
 import com.youssef.cloath_store.databinding.FragmentProductBinding;
-import com.youssef.cloath_store.models.Products;
+import com.youssef.cloath_store.models.Product;
+import com.youssef.cloath_store.roomdatabase.MyRoomDatabase;
+import com.youssef.cloath_store.roomdatabase.ProductDao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,7 +34,7 @@ public class ProductFragment extends Fragment {
     FragmentProductBinding binding;
     private RecyclerView recyclerView;
     private ProductAdapter PAdapter;
-    private ArrayList<Products> products;
+    private ArrayList<Product> products=new ArrayList<>();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,26 +48,34 @@ public class ProductFragment extends Fragment {
 
         View V = inflater.inflate(R.layout.fragment_product, container, false);
         recyclerView = V.findViewById(R.id.Rv_Products);
-        products = new ArrayList<Products>();
-
-        String[] Cat = {"T-Shirts", "Pants", "Shoes","Jackets"};
-        int[] images = {R.drawable.shirts,R.drawable.pants,R.drawable.wonder,R.drawable.jackets};
-        products.add(new Products("jacket",1,"shiit",5,2,null));
-        products.add(new Products("batats",1,"henaaaa2",5,2,null));
-        products.add(new Products("batasss",1,"hena",5,2,null));
-
-        PAdapter = new ProductAdapter(new Callback<Products>() {
-            @Override
-            public void call(Products obj) {
-                Intent i = new Intent(getActivity(), Product_infoActivity.class);
-                i.putExtra("id",obj.getId());
-                getActivity().startActivity(i);
-            }
+        getdproudctatabase();
+        PAdapter = new ProductAdapter(obj -> {
+            Intent i = new Intent(getActivity(), Product_DescriptionActivity.class);
+            i.putExtra("id",obj.getUid());
+            startActivity(i);
         },products);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
         recyclerView.setAdapter(PAdapter);
-        products = new ArrayList<Products>();
         return V;
     }
+
+    private void getdproudctatabase() {
+        if(type!=null&&!type.isEmpty()){
+           ProductDao pdo =MyRoomDatabase.getInstance(getContext()).productDao();
+           new Thread(()->{
+
+           }).start();
+
+           new Thread(() -> {
+               // for test only
+               List<Product> list=pdo.findByCatogy(type);
+               //real code
+//               List<Product> list=pdo.findByCatogy(type);
+               products.addAll(list);
+               if(PAdapter!=null)
+                     getActivity().runOnUiThread(() -> PAdapter.pushdata(products));
+           }).start();
+        }
     }
+}
 
