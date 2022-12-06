@@ -18,4 +18,13 @@ public class Converter {
     public static Long CalnderToTimestamp(Calendar date) {
         return date == null ? null : date.getTimeInMillis();
     }
+    @TypeConverter
+    public static int ftoint(float num) {
+
+        return  (int)(Math.round(num));
+    }
+    @TypeConverter
+    public static float ftoint(int num) {
+        return  (float) (Math.round(num));
+    }
 }
