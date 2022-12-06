@@ -29,7 +29,7 @@ public class Product {
     private int count;
 
     @ColumnInfo(name = "price")
-    private int price;
+    private float price;
 
     @ColumnInfo(name = "amountsold")
     private int amountsold;
@@ -69,11 +69,11 @@ public class Product {
         this.count = count;
     }
 
-    public int getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
