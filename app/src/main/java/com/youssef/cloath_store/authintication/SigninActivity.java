@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.youssef.cloath_store.AdminActivity;
 import com.youssef.cloath_store.Constants;
 import com.youssef.cloath_store.MainActivity;
 import com.youssef.cloath_store.R;
@@ -58,7 +59,12 @@ public class SigninActivity extends AppCompatActivity {
                     return;
                 }
             }
-
+            if(info[0].equals("admin")&&info[1].equals("admin")){
+                Intent intent=new Intent(this, AdminActivity.class);
+                startActivity(intent);
+                finish();
+                return;
+            }
             UserDao users = MyRoomDatabase.getInstance(this).userdao();
             new Thread(() -> {
                 int id = users.Login(info[0],info[1]);

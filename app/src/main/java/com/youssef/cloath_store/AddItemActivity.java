@@ -8,7 +8,6 @@ import android.widget.Toast;
 import com.youssef.cloath_store.databinding.ActivityAddItemBinding;
 import com.youssef.cloath_store.databinding.ActivityTest2Binding;
 import com.youssef.cloath_store.models.Product;
-import com.youssef.cloath_store.models.Products;
 import com.youssef.cloath_store.roomdatabase.MyRoomDatabase;
 import com.youssef.cloath_store.roomdatabase.ProductDao;
 
