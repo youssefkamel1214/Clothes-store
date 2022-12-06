@@ -9,6 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.youssef.cloath_store.R;
+import com.youssef.cloath_store.databinding.ActivitySigninBinding;
+import com.youssef.cloath_store.databinding.FragmentUserBinding;
+import com.youssef.cloath_store.models.User;
+import com.youssef.cloath_store.roomdatabase.MyRoomDatabase;
+import com.youssef.cloath_store.roomdatabase.UserDao;
+
+import java.text.SimpleDateFormat;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,19 +55,34 @@ public class UserFragment extends Fragment {
         return fragment;
     }
 
+    int id;
+    User u;
+    FragmentUserBinding binding;
+    SimpleDateFormat DMY=new SimpleDateFormat("dd-MMM-YYYY");
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user, container, false);
+        binding = FragmentUserBinding.inflate(inflater,container,false);
+        if (getArguments() != null) {
+            id = getArguments().getInt("id");
+        }
+        UserDao users = MyRoomDatabase.getInstance(getContext()).userdao();
+        new Thread(() -> {
+            u =  users.findById(id);
+            getActivity().runOnUiThread(() -> {
+                binding.Name.setText(u.getName());
+                binding.Email.setText(u.getEmail());
+                binding.PwInfo.setText(u.getPssword());
+                binding.PhoneNo.setText(u.getName());
+                binding.UdateInfo.setText(DMY.format(u.getDate().getTime()));
+            });
+        }).start();
+        return binding.getRoot();
     }
 }

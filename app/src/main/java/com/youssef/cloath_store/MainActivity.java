@@ -40,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.user:
                     F = new UserFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("id",getIntent().getIntExtra("id",-1));
+                    F.setArguments(bundle);
                     break;
                 case R.id.search:
                     F = new SearchFragment();
