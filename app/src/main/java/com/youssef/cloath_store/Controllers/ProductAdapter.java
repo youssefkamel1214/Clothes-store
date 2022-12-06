@@ -14,13 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.youssef.cloath_store.R;
 import com.youssef.cloath_store.models.Categories;
-import com.youssef.cloath_store.models.Products;
+import com.youssef.cloath_store.models.Product;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder>{
+
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
@@ -39,9 +41,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         }
 
     }
-    Callback<Products> callback;
-    private List<Products> products;
-    public ProductAdapter(Callback<Products> callback, List<Products> products)
+    Callback<Product> callback;
+    private List<Product> products;
+    public ProductAdapter(Callback<Product> callback, List<Product> products)
     {
         this.callback=callback;
         this.products = products;
@@ -55,17 +57,22 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Products G = products.get(position);
+        Product G = products.get(position);
         holder.title.setText(G.getTitle());
-        holder.Price.setText("Price: " + Integer.toString(G.getPrice()) + "  EGP");
-        //Bitmap bmp = BitmapFactory.decodeByteArray(G.getImage(), 0, G.getImage().length);
-        //holder.img.setImageBitmap(bmp);
-        holder.img.setImageDrawable(holder.img.getContext().getDrawable(R.drawable.jackets));
+        holder.Price.setText("Price: " + G.getPrice() + "  EGP");
+        Bitmap bmp = BitmapFactory.decodeByteArray(G.getImage(), 0, G.getImage().length);
+        holder.img.setImageBitmap(bmp);
+//        holder.img.setImageDrawable(holder.img.getContext().getDrawable(R.drawable.jackets));
         holder.C.setOnClickListener(view -> callback.call(G));
     }
 
+    public void pushdata(ArrayList<Product> products) {
+        this.products=products;
+        notifyDataSetChanged();
+    }
     @Override
     public int getItemCount() {
+
         return products.size();
     }
 

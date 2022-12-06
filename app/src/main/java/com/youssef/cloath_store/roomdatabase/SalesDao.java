@@ -24,8 +24,12 @@ public interface SalesDao{
     @Update
     void updateUser(Sales sale);
 
-    @Query("SELECT * FROM sales WHERE userid LIKE :userid")
-    List<Sales> findByIserId(int userid);
+    @Query("SELECT * FROM sales WHERE userid LIKE :userid and strftime(\"%m-%d-%Y\", date, 'unixepoch') = strftime(\"%m-%d-%Y\", :date, 'unixepoch')")
+    List<Sales> findByIserId(int userid,long date);
+
+    @Query("SELECT * FROM sales WHERE strftime(\"%m-%d-%Y\", date, 'unixepoch') = strftime(\"%m-%d-%Y\", :date, 'unixepoch')")
+    List<Sales> findByDate(long date);
+
 
 //    @Query("SELECT * FROM sales WHERE productid LIKE :productid LIMIT 1")
 //    Sales findByProductId(int productid);
