@@ -107,14 +107,17 @@
             app:layout_constraintTop_toBottomOf="@+id/phone">
 
             <EditText
+                android:id="@+id/DateofBirth"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:textSize="25sp"
+                android:textStyle="bold"
                 android:hint="@string/date_of_birth"
                 android:enabled="false" />
 
             <ImageView
+                android:id="@+id/dateofbirth"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_40sdp"
                 android:tint="?attr/editTextColor"

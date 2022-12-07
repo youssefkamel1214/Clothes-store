@@ -30,6 +30,7 @@ public class ReportActivity extends AppCompatActivity {
 
     ActivityReportBinding binding;
     SalesDao report;
+    SimpleDateFormat DMY=new SimpleDateFormat("dd/MM/YYYY");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +45,7 @@ public class ReportActivity extends AppCompatActivity {
 
 
         binding.srdate.setOnClickListener(view->{
+            search(0, null);
             int uid;
             Date date=null;
             if(!binding.date.getText().toString().isEmpty()&&!binding.idu.getText().toString().isEmpty()){
@@ -70,22 +72,41 @@ public class ReportActivity extends AppCompatActivity {
     }
 
     public void search(int id, Date date){
-        new Thread(()->{
-            // aktb logic bta3 data base(insert update delete)
-            Sales sale1=new Sales();;
-            sale1.setQuantity(20);
-            sale1.setDate(Calendar.getInstance());
-            sale1.setProductid(30);
-            sale1.setUserid(60);
-            report.insert(sale1);
-            // m7taga tt8yr
-            if(id!=0){
-                List<Sales> list_sales_id= report.findByIserId(id,date.getTime());
-            }
-            // m7taga tt8yr
-                List<Sales> list_sales_all= report.findByDate(Calendar.getInstance().getTimeInMillis());
-                System.out.println("Basdasda");
-        }).start();
+//        new Thread(()->{
+//            // aktb logic bta3 data base(insert update delete)
+//            Sales sale1=new Sales();
+//            sale1.setQuantity(20);
+//            Date d=null;
+//            try {
+//               d= DMY.parse("7/12/2022");
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//            }
+//            Calendar c=Calendar.getInstance();
+//            c.setTimeInMillis(d.getTime());
+//            sale1.setDate(c);
+//            sale1.setProductid(30);
+//            sale1.setUserid(60);
+//            report.insert(sale1);
+//            // m7taga tt8yr
+//            if(id!=0){
+//                List<Sales> list_sales_id= report.findByIserId(id,date.getTime());
+//            }
+//            // m7taga tt8yr
+////                List<Sales> list_sales_all= report.findByDate(Calendar.getInstance().getTimeInMillis());
+//                System.out.println("Basdasda");
+//                System.out.println("Basdasdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+//                System.out.println("Basdasdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa----------------------------");
+//
+//            try {
+//                System.out.println(report.findByDate(DMY.parse("7/12/2022").getTime()).size());
+//                System.out.println(DMY.parse("7/12/2022").getTime());
+//                System.out.println(DMY.parse("7/12/2022"));
+//                System.out.println(Calendar.getInstance());
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//            }
+//        }).start();
 
 
     }

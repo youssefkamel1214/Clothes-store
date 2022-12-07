@@ -22,6 +22,13 @@ public class Sales {
     @ColumnInfo(name = "date")
     private Calendar date;
 
+    public Sales(int userid, int productid, int quantity, Calendar date) {
+        this.userid = userid;
+        this.productid = productid;
+        this.quantity = quantity;
+        this.date = date;
+    }
+
     public int getId() {
         return id;
     }
@@ -62,9 +69,7 @@ public class Sales {
         this.date = date;
     }
 
-    public Sales(){
 
-    }
 }
 
 

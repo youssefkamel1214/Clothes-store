@@ -22,10 +22,6 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private CategoryAdapter CAdapter;
     private ArrayList<Categories> categories;
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
