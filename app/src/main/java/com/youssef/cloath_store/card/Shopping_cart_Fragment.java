@@ -92,11 +92,11 @@ public class Shopping_cart_Fragment extends Fragment {
             if(!shoppingcards.isEmpty()){
                 SalesDao salesDao=MyRoomDatabase.getInstance(getContext()).salesDao();
                 new Thread(()->{
-
                     shoppingcards.forEach(shoppingcard -> {
                         Calendar calendar=Calendar.getInstance();
                         calendar=Constants.return_hour_to_zero(calendar);
                         salesDao.insert(new Sales(userid,shoppingcard.getProudctid(),shoppingcard.getCount(),calendar ));
+
                     });
                     shoppingDao.delete(shoppingcards);
                     shoppingcards.clear();

@@ -24,10 +24,11 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.045" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/srdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
             android:text="Search"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -35,19 +36,44 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.364" />
 
-        <EditText
-            android:id="@+id/date"
-            android:layout_width="wrap_content"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/terms"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Enter The Day"
-            android:inputType="date"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:text="@string/terms"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:weightSum="4"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/idu"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.166" />
+            app:layout_constraintTop_toBottomOf="@+id/textView">
+
+            <EditText
+                android:id="@+id/date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textColor="?attr/editTextColor"
+                android:hint="Pick a Date"
+                android:enabled="false" />
+
+            <ImageView
+                android:id="@+id/dateofbirth"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:tint="?attr/editTextColor"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_baseline_calendar_month_24"
+                android:layout_weight="1"
+                tools:ignore="MissingPrefix,UseAppTint" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <EditText
             android:id="@+id/idu"
@@ -66,13 +92,14 @@
         <ListView
             android:id="@+id/lview"
             android:layout_width="409dp"
-            android:layout_height="432dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@id/srdate"
+            app:layout_constraintVertical_bias="0.22000003" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

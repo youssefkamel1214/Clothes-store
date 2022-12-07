@@ -23,8 +23,8 @@ public interface ProductDao{
     @Delete
     void delete(Product product);
 
-    @Update
-    void updateProduct(Product product);
+      @Update
+      void updateProduct(Product product);
 
     @Query("SELECT * FROM product WHERE uid LIKE :uid LIMIT 1")
     Product findById(int uid);

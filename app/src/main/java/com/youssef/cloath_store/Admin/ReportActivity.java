@@ -2,8 +2,12 @@ package com.youssef.cloath_store.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.PieChart;
@@ -38,59 +42,45 @@ public class ReportActivity extends AppCompatActivity {
     UserDao udao;
     ArrayList<Sales> transactions;
     ArrayList<String> trans=new ArrayList<>();
-    SimpleDateFormat DMY=new SimpleDateFormat("dd/MM/YYYY");
+    Calendar date=Calendar.getInstance();
+    SimpleDateFormat DMY=new SimpleDateFormat("dd/MMM/YYYY");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //bind all buttons of this activity
         binding= ActivityReportBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-
+         date=Constants.return_hour_to_zero(date);
         report= MyRoomDatabase.getInstance(this.getApplicationContext()).salesDao();
-
-
-
+        proddao= MyRoomDatabase.getInstance(this.getApplicationContext()).productDao();
+        udao= MyRoomDatabase.getInstance(this.getApplicationContext()).userdao();
+        binding.dateofbirth.setOnClickListener(view -> createdate());
 
         binding.srdate.setOnClickListener(view->{
-            Date date=null;
-            SimpleDateFormat DMY=new SimpleDateFormat("dd/MM/YYYY");
-
-            try {
-                date= DMY.parse(binding.date.getText().toString()) ;
-            } catch (ParseException e) {
-                Toast.makeText(this,e.getMessage(),Toast.LENGTH_LONG).show();
-            }
             int uid;
-
             if(!binding.date.getText().toString().isEmpty()&&!binding.idu.getText().toString().isEmpty()){
-                
-
                 uid=Integer.parseInt(binding.idu.getText().toString());
-
                 search(uid,date);
-
             }
-            else if(binding.idu.getText().toString().isEmpty()){
+            else if(!binding.date.getText().toString().isEmpty()&&binding.idu.getText().toString().isEmpty()){
                  uid= 0;
                  search(uid,date);
             }
-
-
-
+            else {
+                Toast.makeText(this,"please enter the date",Toast.LENGTH_LONG).show();
+            }
         });
     }
 
-    public void search(int id, Date date){
+    public void search(int id, Calendar date){
         new Thread(()->{
             if(id!=0){
-                transactions= new ArrayList<>(report.findByIserId(id,date.getTime()));
-
+                transactions= new ArrayList<>(report.findByIserId(id,date.getTimeInMillis()));
             }
             else{
-                transactions= new ArrayList<>(report.findByDate(date.getTime()));
+                transactions= new ArrayList<>(report.findByDate(date.getTimeInMillis()));
             }
-
+            trans.clear();
             transactions.forEach(sales -> {
                 Product product=proddao.findById(sales.getProductid());
                 User user=udao.findById(sales.getUserid());
@@ -106,5 +96,20 @@ public class ReportActivity extends AppCompatActivity {
         }).start();
 
 
+    }
+    public void createdate(){
+        DatePickerDialog datePickerDialog=new DatePickerDialog(this, android.R.style.Theme_Holo_Dialog_MinWidth, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                date.set(Calendar.YEAR,year);
+                date.set(Calendar.MONTH,month);
+                date.set(Calendar.DAY_OF_MONTH,day);
+                binding.date.setText(DMY.format(date.getTime()));
+            }
+        },date.get(Calendar.YEAR),date.get(Calendar.MONTH),date.get(Calendar.DAY_OF_MONTH)
+        );
+        datePickerDialog.setTitle("Select date");
+        datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        datePickerDialog.show();
     }
 }
