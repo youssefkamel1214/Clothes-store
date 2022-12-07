@@ -1,4 +1,4 @@
-package com.youssef.cloath_store;
+package com.youssef.cloath_store.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 

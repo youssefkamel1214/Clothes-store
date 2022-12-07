@@ -1,4 +1,4 @@
-package com.youssef.cloath_store;
+package com.youssef.cloath_store.Admin;
 
 import static com.youssef.cloath_store.R.id.id_delete;
 
@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.youssef.cloath_store.R;
 import com.youssef.cloath_store.databinding.ActivitySigninBinding;
 import com.youssef.cloath_store.models.Product;
 import com.youssef.cloath_store.roomdatabase.MyRoomDatabase;

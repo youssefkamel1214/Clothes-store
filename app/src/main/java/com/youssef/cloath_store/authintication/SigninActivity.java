@@ -8,10 +8,9 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
-import com.youssef.cloath_store.AdminActivity;
+import com.youssef.cloath_store.Admin.AdminActivity;
 import com.youssef.cloath_store.Constants;
 import com.youssef.cloath_store.MainActivity;
 import com.youssef.cloath_store.R;
@@ -68,8 +67,10 @@ public class SigninActivity extends AppCompatActivity {
             UserDao users = MyRoomDatabase.getInstance(this).userdao();
             new Thread(() -> {
                 int id = users.Login(info[0],info[1]);
-                if(id != 0)
+                if(id != 0) {
+                    sharedPreferences.edit().putInt("userid",id).apply();
                     movetohome(id);
+                }
                 else
                     runOnUiThread(() -> {
                         Toast. makeText(getApplicationContext(),"Inavalid Username or Password",Toast. LENGTH_SHORT).show();
@@ -79,6 +80,7 @@ public class SigninActivity extends AppCompatActivity {
         });
         binding.member.setOnClickListener(view->{
             Intent i = new Intent(this, SignupActivity.class);
+
             startActivity(i);
             finish();
         });
@@ -102,7 +104,7 @@ public class SigninActivity extends AppCompatActivity {
             product.setTitle(jackets[i]);
             product.setPrice(45+2*i);
             product.setCount(12);
-            product.setAmountsold(0);
+            product.setAmountsold(100*i+50);
             product.setCategory("Jackets");
             Bitmap bitmap = ((BitmapDrawable)getDrawable(jimages[i])).getBitmap();
             product.setImage(Constants.getBytes(bitmap));
@@ -113,7 +115,7 @@ public class SigninActivity extends AppCompatActivity {
             product.setTitle(pant[i]);
             product.setPrice(10+2*i);
             product.setCount(12);
-            product.setAmountsold(0);
+            product.setAmountsold(50*i+5);
             product.setCategory("Pants");
             Bitmap bitmap = ((BitmapDrawable)getDrawable(pimages[i])).getBitmap();
             product.setImage(Constants.getBytes(bitmap));
@@ -124,7 +126,7 @@ public class SigninActivity extends AppCompatActivity {
             product.setTitle(sheos[i]);
             product.setPrice(10+2*i);
             product.setCount(12);
-            product.setAmountsold(0);
+            product.setAmountsold(2*i+1);
             product.setCategory("Shoes");
             Bitmap bitmap = ((BitmapDrawable)getDrawable(simages[i])).getBitmap();
             product.setImage(Constants.getBytes(bitmap));

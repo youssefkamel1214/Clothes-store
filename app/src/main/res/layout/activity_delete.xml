@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".DeleteActivity">
+        tools:context=".Admin.DeleteActivity">
 
         <TextView
             android:id="@+id/id_del"
