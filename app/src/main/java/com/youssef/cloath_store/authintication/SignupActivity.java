@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
+import com.youssef.cloath_store.Constants;
 import com.youssef.cloath_store.R;
 import com.youssef.cloath_store.databinding.ActivitySigninBinding;
 import com.youssef.cloath_store.databinding.ActivitySignupBinding;
@@ -30,9 +31,7 @@ public class SignupActivity extends AppCompatActivity {
     SimpleDateFormat DMY=new SimpleDateFormat("dd-MMM-YYYY");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Date_of_birth.set(Calendar.MINUTE,0);
-        Date_of_birth.set(Calendar.SECOND,0);
-        Date_of_birth.set(Calendar.MILLISECOND,0);
+        Date_of_birth= Constants.return_hour_to_zero(Date_of_birth);
         super.onCreate(savedInstanceState);
         binding=ActivitySignupBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

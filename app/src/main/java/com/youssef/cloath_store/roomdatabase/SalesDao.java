@@ -24,10 +24,10 @@ public interface SalesDao{
     @Update
     void updateUser(Sales sale);
 
-    @Query("SELECT * FROM sales WHERE userid LIKE :userid and strftime(\"%m-%d-%Y\", date, 'unixepoch') = strftime(\"%m-%d-%Y\", :date, 'unixepoch')")
+    @Query("SELECT * FROM sales WHERE userid LIKE :userid and date like :date")
     List<Sales> findByIserId(int userid,long date);
 
-    @Query("SELECT * FROM sales WHERE strftime(\"%m-%d-%Y\", date, 'unixepoch') = strftime(\"%m-%d-%Y\", :date, 'unixepoch')")
+    @Query("SELECT * FROM sales WHERE date = :date")
     List<Sales> findByDate(long date);
 
 

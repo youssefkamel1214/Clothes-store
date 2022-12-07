@@ -7,12 +7,15 @@ import android.net.Uri;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Calendar;
 
 public class Constants {
     public static  String RememberValue=new String("Remember");
     public static int Pick_Image_camera_Code=1002;
     public static int camera_permissios=102;
     public static int Pick_Image_Code=1001;
+    public static String usershoppingcard="userShoppingCard";
+
     public static  byte[] getBytes(Uri uri, Context c) throws IOException {
         InputStream inputStream =   c.getContentResolver().openInputStream(uri);
         ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
@@ -30,5 +33,12 @@ public class Constants {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
         byte[] bitMapData = stream.toByteArray();
         return bitMapData;
+    }
+    public  static Calendar return_hour_to_zero(Calendar calendar){
+        calendar.set(Calendar.HOUR, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        return calendar;
     }
 }

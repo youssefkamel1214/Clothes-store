@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -13,13 +14,16 @@ import android.widget.Toast;
 
 import com.youssef.cloath_store.databinding.ActivityProductDescriptionBinding;
 import com.youssef.cloath_store.models.Product;
+import com.youssef.cloath_store.models.Shoppingcard;
 import com.youssef.cloath_store.roomdatabase.MyRoomDatabase;
 import com.youssef.cloath_store.roomdatabase.ProductDao;
+import com.youssef.cloath_store.roomdatabase.ShoppingDao;
 import com.youssef.cloath_store.roomdatabase.UserDao;
 
 public class Product_DescriptionActivity extends AppCompatActivity {
     ActivityProductDescriptionBinding binding;
     int Pid;
+    int Uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +35,10 @@ public class Product_DescriptionActivity extends AppCompatActivity {
         getWindow().setBackgroundDrawable(getDrawable(R.drawable.actionbar));
 
         ProductDao prod = MyRoomDatabase.getInstance(this).productDao();
+        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref",MODE_PRIVATE);
+
         Pid = getIntent().getIntExtra("id", -1);
+        Uid = sharedPreferences.getInt("userid", -1);
         new Thread(() -> {
             Product p = prod.findById(Pid);
             Bitmap bmp = BitmapFactory.decodeByteArray(p.getImage(),0,p.getImage().length);
@@ -40,7 +47,13 @@ public class Product_DescriptionActivity extends AppCompatActivity {
                 binding.ProductName.setText(p.getTitle());
             });
         }).start();
-
+        binding.AddToCart.setOnClickListener(view -> {
+            Shoppingcard shoppingcard=new Shoppingcard(Uid,Pid,1);
+            ShoppingDao shoppingDao=MyRoomDatabase.getInstance(this).shoppingDao();
+            new Thread(()->shoppingDao.insert(shoppingcard)).start();
+            finish();
+            Toast.makeText(this,"7atnha ya abn ws5a",Toast.LENGTH_LONG).show();
+        });
         handletextavailablity();
     }
 

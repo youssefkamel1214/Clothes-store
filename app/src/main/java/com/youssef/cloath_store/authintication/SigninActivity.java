@@ -68,8 +68,10 @@ public class SigninActivity extends AppCompatActivity {
             UserDao users = MyRoomDatabase.getInstance(this).userdao();
             new Thread(() -> {
                 int id = users.Login(info[0],info[1]);
-                if(id != 0)
+                if(id != 0) {
+                    sharedPreferences.edit().putInt("userid",id).apply();
                     movetohome(id);
+                }
                 else
                     runOnUiThread(() -> {
                         Toast. makeText(getApplicationContext(),"Inavalid Username or Password",Toast. LENGTH_SHORT).show();
@@ -79,6 +81,7 @@ public class SigninActivity extends AppCompatActivity {
         });
         binding.member.setOnClickListener(view->{
             Intent i = new Intent(this, SignupActivity.class);
+
             startActivity(i);
             finish();
         });

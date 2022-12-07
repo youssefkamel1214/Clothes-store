@@ -51,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.shopping_cart:
                     F = new Shopping_cart_Fragment();
+                    Bundle bundlee = new Bundle();
+                    bundlee.putInt("id",getIntent().getIntExtra("id",-1));
+                    F.setArguments(bundlee);
                     break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_view_tag,F).commit();
