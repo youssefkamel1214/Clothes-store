@@ -29,13 +29,14 @@ public interface ProductDao{
     @Query("SELECT * FROM product WHERE uid LIKE :uid LIMIT 1")
     Product findById(int uid);
 
-    @Query("select * from product order by  amountsold limit 10")
+    @Query("select * from product order by  amountsold Desc limit 10")
      List<Product> get_top_10();
     @Query("SELECT * FROM product WHERE title LIKE :title")
     List<Product> findByTitle(String title);
     @Query("SELECT * FROM product where category =:catgory")
     List<Product> findByCatogy(String catgory);
-
+    @Query("Select sum(amountsold) from product")
+    int get_toatal_sales();
     @Query("SELECT * FROM product")
     List<Product> getAll();
 }

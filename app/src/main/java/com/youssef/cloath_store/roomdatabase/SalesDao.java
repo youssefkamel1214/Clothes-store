@@ -28,7 +28,7 @@ public interface SalesDao{
     List<Sales> findByIserId(int userid,long date);
 
     @Query("SELECT * FROM sales WHERE date = :date")
-    List<Sales> findByDate(long date);
+     List<Sales> findByDate(long date);
 
 
 //    @Query("SELECT * FROM sales WHERE productid LIKE :productid LIMIT 1")

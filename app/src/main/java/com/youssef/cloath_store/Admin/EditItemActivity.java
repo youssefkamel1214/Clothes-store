@@ -1,4 +1,4 @@
-package com.youssef.cloath_store;
+package com.youssef.cloath_store.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,6 @@ import android.widget.Toast;
 
 import com.youssef.cloath_store.databinding.ActivityEditItemBinding;
 import com.youssef.cloath_store.models.Product;
-import com.youssef.cloath_store.models.Products;
 import com.youssef.cloath_store.roomdatabase.ProductDao;
 import com.youssef.cloath_store.roomdatabase.SalesDao;
 

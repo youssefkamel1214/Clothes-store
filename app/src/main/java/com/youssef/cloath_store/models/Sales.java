@@ -29,6 +29,10 @@ public class Sales {
         this.date = date;
     }
 
+    public Sales() {
+
+    }
+
     public int getId() {
         return id;
     }
