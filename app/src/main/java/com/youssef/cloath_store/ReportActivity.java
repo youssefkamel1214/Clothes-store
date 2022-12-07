@@ -5,6 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.youssef.cloath_store.databinding.ActivityAddItemBinding;
 import com.youssef.cloath_store.databinding.ActivityReportBinding;
 import com.youssef.cloath_store.models.Product;
@@ -15,19 +20,26 @@ import com.youssef.cloath_store.roomdatabase.SalesDao;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 public class ReportActivity extends AppCompatActivity {
+    //intitialization of global variables
+
     ActivityReportBinding binding;
     SalesDao report;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //bind all buttons of this activity
         binding= ActivityReportBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
         report= MyRoomDatabase.getInstance(this.getApplicationContext()).salesDao();
+
 
 
 
