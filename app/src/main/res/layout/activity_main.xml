@@ -23,7 +23,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:menu="@menu/nav_menu" />
-        <fragment
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragment_container_view_tag"
             android:name="com.youssef.cloath_store.home.HomeFragment"
             android:layout_width="match_parent"
