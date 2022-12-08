@@ -33,6 +33,9 @@ public interface UserDao{
     @Query("SELECT uid FROM user WHERE email like :email AND password like :password")
     int Login(String  email, String password);
 
+    @Query("Select password From user Where email like :email AND phone like :PhoneNo")
+     String ForgetPW(String email,String PhoneNo);
+
     @Query("SELECT * FROM user")
     List<User> getAll();
 

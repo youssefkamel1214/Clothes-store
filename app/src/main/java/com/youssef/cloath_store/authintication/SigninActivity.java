@@ -15,7 +15,9 @@ import com.youssef.cloath_store.Constants;
 import com.youssef.cloath_store.MainActivity;
 import com.youssef.cloath_store.R;
 import com.youssef.cloath_store.databinding.ActivitySigninBinding;
+import com.youssef.cloath_store.models.Categories;
 import com.youssef.cloath_store.models.Product;
+import com.youssef.cloath_store.roomdatabase.CategoriesDao;
 import com.youssef.cloath_store.roomdatabase.MyRoomDatabase;
 import com.youssef.cloath_store.roomdatabase.UserDao;
 
@@ -42,11 +44,6 @@ public class SigninActivity extends AppCompatActivity {
             movetohome(sharedPreferences.getInt(Constants.RememberValue,-1));
         }
         binding.signin.setOnClickListener(view -> {
-            if(binding.rembemer.isChecked()) {
-                SharedPreferences.Editor myEdit = sharedPreferences.edit();
-                myEdit.putInt(Constants.RememberValue, 0);
-                myEdit.apply();
-            }
             String [] info = new String[2];
             info[0] = binding.Email.getText().toString();
             info[1] = binding.password.getText().toString();
@@ -69,6 +66,12 @@ public class SigninActivity extends AppCompatActivity {
                 int id = users.Login(info[0],info[1]);
                 if(id != 0) {
                     sharedPreferences.edit().putInt("userid",id).apply();
+                    if(binding.rembemer.isChecked()) {
+                        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                        myEdit.putInt(Constants.RememberValue, id);
+                        myEdit.apply();
+                    }
+
                     movetohome(id);
                 }
                 else
@@ -80,9 +83,12 @@ public class SigninActivity extends AppCompatActivity {
         });
         binding.member.setOnClickListener(view->{
             Intent i = new Intent(this, SignupActivity.class);
-
             startActivity(i);
             finish();
+        });
+        binding.ForgetPw.setOnClickListener(view -> {
+            Intent i = new Intent(this, ForgetMeActivity.class);
+            startActivity(i);
         });
 
     }
@@ -90,6 +96,7 @@ public class SigninActivity extends AppCompatActivity {
 
 
     private void putdataforfirsttime() {
+        CreateCategories();
         String []jackets=new String[]{"Casual","Formal Jacket","LeatherJacket","Winter Coat"};
         String []pant=new String[]{"Jeans","Jogger","Sweet Pants","Trousers"};
         String []sheos=new String[]{"boots","casual ","Leather","snickers"};
@@ -148,6 +155,20 @@ public class SigninActivity extends AppCompatActivity {
         }).start();
         SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref",MODE_PRIVATE);
         sharedPreferences.edit().putBoolean("firsttime",false).apply();
+    }
+
+    private void CreateCategories() {
+
+        String[] Cat = {"T-Shirts", "Pants", "Shoes","Jackets"};
+        int[] images = {R.drawable.shirts,R.drawable.pants,R.drawable.wonder,R.drawable.jackets};
+        ArrayList<Categories>categories=new ArrayList<>();
+        for(int i = 0; i < 4;i++) {
+            Bitmap bitmap = ((BitmapDrawable)getDrawable(images[i])).getBitmap();
+            byte[] image= Constants.getBytes(bitmap);
+            categories.add(new Categories(Cat[i], image));
+        }
+        CategoriesDao categoriesDao=MyRoomDatabase.getInstance(this).categoriesDao();
+        new Thread(()->categoriesDao.insertall(categories)).start();
     }
 
     private void movetohome(int id) {

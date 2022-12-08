@@ -1,5 +1,7 @@
 package com.youssef.cloath_store.Controllers;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +52,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     public void onBindViewHolder(@NonNull CategoryAdapter.ViewHolder holder, int position) {
         Categories G = categoriesList.get(position);
         holder.title.setText(G.getTitle());
-        holder.img.setImageDrawable(holder.img.getContext().getDrawable(G.getImage()));
+        Bitmap bmp = BitmapFactory.decodeByteArray(G.getImage(), 0, G.getImage().length);
+        holder.img.setImageBitmap(bmp);
         holder.C.setOnClickListener(view -> callback.call(G));
     }
 

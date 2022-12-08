@@ -10,27 +10,42 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Admin.DeleteActivity"
+        tools:context=".Admin.EditCatActivity"
         android:background="?attr/backgroundColor">
 
+        <EditText
+            android:id="@+id/id_delete2"
+            android:layout_width="272dp"
+            android:layout_height="62dp"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Name of the new Category"
+            android:inputType="text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.238"
+            app:layout_constraintStart_toEndOf="@+id/name_del"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.451" />
+
         <TextView
-            android:id="@+id/id_del"
-            android:layout_width="37dp"
-            android:layout_height="31dp"
-            android:text="ID :"
+            android:id="@+id/name_del"
+            android:layout_width="102dp"
+            android:layout_height="22dp"
+            android:text="Old name :"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.147"
+            app:layout_constraintHorizontal_bias="0.051"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.31" />
+            app:layout_constraintVertical_bias="0.313" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Delete Items"
+            android:text="Edit Categories"
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -42,27 +57,27 @@
             android:id="@+id/del"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Delete Item"
             android:background="@drawable/button_background"
+            android:text="Edit Category"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.529"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/id_delete"
-            app:layout_constraintVertical_bias="0.213" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.614" />
 
         <EditText
             android:id="@+id/id_delete"
-            android:layout_width="247dp"
-            android:layout_height="55dp"
+            android:layout_width="272dp"
+            android:layout_height="62dp"
             android:ems="10"
             android:gravity="center"
-            android:hint="Enter the Id of the Item"
-            android:inputType="number"
+            android:hint="Name of the Category"
+            android:inputType="text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.142"
-            app:layout_constraintStart_toEndOf="@+id/id_del"
+            app:layout_constraintStart_toEndOf="@+id/name_del"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.306" />
     </androidx.constraintlayout.widget.ConstraintLayout>

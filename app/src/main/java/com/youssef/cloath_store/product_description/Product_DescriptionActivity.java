@@ -1,4 +1,4 @@
-package com.youssef.cloath_store;
+package com.youssef.cloath_store.product_description;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.youssef.cloath_store.R;
 import com.youssef.cloath_store.databinding.ActivityProductDescriptionBinding;
 import com.youssef.cloath_store.models.Product;
 import com.youssef.cloath_store.models.Shoppingcard;

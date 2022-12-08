@@ -7,13 +7,14 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
+import com.youssef.cloath_store.models.Categories;
 import com.youssef.cloath_store.models.Product;
 import com.youssef.cloath_store.models.Rating;
 import com.youssef.cloath_store.models.Sales;
 import com.youssef.cloath_store.models.Shoppingcard;
 import com.youssef.cloath_store.models.User;
 
-@Database(entities = {User.class, Product.class, Sales.class, Rating.class, Shoppingcard.class},version = 1)
+@Database(entities = {User.class, Product.class, Sales.class, Rating.class, Shoppingcard.class, Categories.class},version = 2)
 @TypeConverters({Converter.class})
 public abstract class MyRoomDatabase extends RoomDatabase{
 
@@ -22,6 +23,7 @@ public abstract class MyRoomDatabase extends RoomDatabase{
     public abstract SalesDao salesDao();
     public abstract RatingDao ratingDao();
     public abstract ShoppingDao shoppingDao();
+    public abstract CategoriesDao categoriesDao();
 
     private static volatile MyRoomDatabase INSTANCE;
 

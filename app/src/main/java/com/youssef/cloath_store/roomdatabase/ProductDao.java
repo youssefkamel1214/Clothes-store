@@ -30,6 +30,9 @@ public interface ProductDao{
     @Query("SELECT * FROM product WHERE uid LIKE :uid LIMIT 1")
     Product findById(int uid);
 
+    @Query("Delete from product where category=:name")
+    void delete_by_categ(String name);
+
     @Query("select * from product order by  amountsold Desc limit 10")
      List<Product> get_top_10();
     @Query("SELECT * FROM product WHERE title LIKE :title")
@@ -40,4 +43,7 @@ public interface ProductDao{
     int get_toatal_sales();
     @Query("SELECT * FROM product")
     List<Product> getAll();
-}
+    @Query("update product set category=:s2 where category=:s1")
+    void editcatbynames(String s2, String s1);
+    @Query("SELECT * FROM product where title like :name  and count > 0")
+    List<Product> findByname(String name);}

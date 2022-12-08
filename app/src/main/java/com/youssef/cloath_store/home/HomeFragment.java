@@ -14,6 +14,8 @@ import com.youssef.cloath_store.product.ProductFragment;
 import com.youssef.cloath_store.R;
 import com.youssef.cloath_store.models.Categories;
 import com.youssef.cloath_store.Controllers.CategoryAdapter;
+import com.youssef.cloath_store.roomdatabase.CategoriesDao;
+import com.youssef.cloath_store.roomdatabase.MyRoomDatabase;
 
 import java.util.ArrayList;
 
@@ -28,18 +30,16 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View V = inflater.inflate(R.layout.fragment_home, container, false);
+        CategoriesDao categoriesDao= MyRoomDatabase.getInstance(getActivity()).categoriesDao();
+        new Thread(() -> {
+            categories=new ArrayList<>( categoriesDao.getall());
+            getActivity().runOnUiThread(() ->{
+                CAdapter = new CategoryAdapter(obj -> movetonewfragmentcatgory(obj), categories);
+                recyclerView.setAdapter(CAdapter);
+            });
+        }).start();
         recyclerView = V.findViewById(R.id.Rv_Categories);
-        categories = new ArrayList<Categories>();
-
-        String[] Cat = {"T-Shirts", "Pants", "Shoes","Jackets"};
-        int[] images = {R.drawable.shirts,R.drawable.pants,R.drawable.wonder,R.drawable.jackets};
-
-        for(int i = 0; i < 4;i++)
-            categories.add(new Categories(Cat[i],images[i]));
-
-        CAdapter = new CategoryAdapter(obj -> movetonewfragmentcatgory(obj), categories);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(CAdapter);
         // Inflate the layout for this fragment
         return V;
     }

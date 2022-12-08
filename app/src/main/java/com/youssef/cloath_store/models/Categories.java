@@ -1,12 +1,34 @@
 package com.youssef.cloath_store.models;
 
-public class Categories {
-    private String  Title;
-    private  int  image;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-    public Categories(String title, int image) {
+@Entity
+public class Categories {
+    public Categories() {
+    }
+
+    @PrimaryKey(autoGenerate = true)
+    private int uid;
+
+    @ColumnInfo(name = "title")
+    private String  Title;
+
+    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
+    private byte[] image;
+
+    public Categories(String title, byte[] image) {
         Title = title;
         this.image = image;
+    }
+
+    public int getUid() {
+        return uid;
+    }
+
+    public void setUid(int uid) {
+        this.uid = uid;
     }
 
     public String getTitle() {
@@ -17,11 +39,11 @@ public class Categories {
         Title = title;
     }
 
-    public int getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 }

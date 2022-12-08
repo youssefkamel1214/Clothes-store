@@ -3,29 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Admin.AddItemActivity"
+        tools:context=".Admin.AddCatActivity"
         android:background="?attr/backgroundColor">
-
-        <EditText
-            android:id="@+id/count2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Count"
-            android:inputType="number"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.676" />
 
         <TextView
             android:id="@+id/items2"
@@ -51,46 +34,33 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.189"
             android:src="@drawable/ic_baseline_filter_24"
-             />
+            />
 
         <EditText
             android:id="@+id/titleadd2"
             android:layout_width="187dp"
             android:layout_height="48dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginEnd="112dp"
             android:ems="10"
             android:hint="Title"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.475" />
+            app:layout_constraintVertical_bias="0.531" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/additem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Item"
             android:background="@drawable/button_background"
+            android:text="Add Item"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.891" />
-
-        <EditText
-            android:id="@+id/categ2"
-            android:layout_width="160dp"
-            android:layout_height="42dp"
-            android:ems="10"
-            android:hint="Category"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/titleadd2"
-            app:layout_constraintHorizontal_bias="0.538"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.48" />
+            app:layout_constraintVertical_bias="0.644" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"
@@ -98,34 +68,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_begin="20dp" />
-
-        <EditText
-            android:id="@+id/price2"
-            android:layout_width="155dp"
-            android:layout_height="47dp"
-            android:layout_marginStart="32dp"
-            android:ems="10"
-            android:hint="Price"
-            android:inputType="numberDecimal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.567" />
-
-        <EditText
-            android:id="@+id/sold2"
-            android:layout_width="175dp"
-            android:layout_height="45dp"
-            android:layout_marginEnd="8dp"
-            android:ems="10"
-            android:hint="Amount Sold"
-            android:inputType="number"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.488"
-            app:layout_constraintStart_toEndOf="@+id/price2"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.568" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline3"

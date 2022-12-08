@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.youssef.cloath_store.Controllers.ProductAdapter;
-import com.youssef.cloath_store.Product_DescriptionActivity;
+import com.youssef.cloath_store.product_description.Product_DescriptionActivity;
 import com.youssef.cloath_store.R;
 import com.youssef.cloath_store.databinding.FragmentProductBinding;
 import com.youssef.cloath_store.models.Product;
@@ -62,9 +62,6 @@ public class ProductFragment extends Fragment {
     private void getdproudctatabase() {
         if(type!=null&&!type.isEmpty()){
            ProductDao pdo =MyRoomDatabase.getInstance(getContext()).productDao();
-           new Thread(()->{
-
-           }).start();
 
            new Thread(() -> {
                // for test only

@@ -1,6 +1,7 @@
 package com.youssef.cloath_store.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.DatePickerDialog;
 import android.graphics.Color;
@@ -16,6 +17,7 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.youssef.cloath_store.Constants;
+import com.youssef.cloath_store.R;
 import com.youssef.cloath_store.databinding.ActivityAddItemBinding;
 import com.youssef.cloath_store.databinding.ActivityReportBinding;
 import com.youssef.cloath_store.models.Product;
@@ -50,6 +52,9 @@ public class ReportActivity extends AppCompatActivity {
         //bind all buttons of this activity
         binding= ActivityReportBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.actionbar));
+        getWindow().setStatusBarColor(ContextCompat.getColor(this,android.R.color.transparent));
+        getWindow().setBackgroundDrawable(getDrawable(R.drawable.actionbar));
          date=Constants.return_hour_to_zero(date);
         report= MyRoomDatabase.getInstance(this.getApplicationContext()).salesDao();
         proddao= MyRoomDatabase.getInstance(this.getApplicationContext()).productDao();

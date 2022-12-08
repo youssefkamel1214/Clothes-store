@@ -3,6 +3,7 @@ package com.youssef.cloath_store.Admin;
 import static com.youssef.cloath_store.R.id.id_delete;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -21,6 +22,9 @@ public class DeleteActivity extends AppCompatActivity {
     ProductDao product_del;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.actionbar));
+        getWindow().setStatusBarColor(ContextCompat.getColor(this,android.R.color.transparent));
+        getWindow().setBackgroundDrawable(getDrawable(R.drawable.actionbar));
         setContentView(R.layout.activity_delete);
         id_del=findViewById(R.id.id_delete);
         Delete=findViewById(R.id.del);
@@ -33,18 +37,7 @@ public class DeleteActivity extends AppCompatActivity {
             delete(id_entered);
 
         });
-        new Thread(()->{
-            // aktb logic bta3 data base(insert update delete)
-            Product pr=new Product();;
-            pr.setAmountsold(20);
-            pr.setCategory("Banton");
-            pr.setCount(10);
-            pr.setTitle("Zeka");
-            pr.setPrice(150);
-            product_del.insert(pr);
-            // lw 5lst wm7tag t update u
 
-        }).start();
     }
 
     public void delete(int id){
@@ -56,6 +49,7 @@ public class DeleteActivity extends AppCompatActivity {
             runOnUiThread(() -> {
                 Toast.makeText(this,"This Item has beem Removed",Toast.LENGTH_SHORT).show();
                 id_del.setText(" ");
+                finish();
             });
 
         }).start();

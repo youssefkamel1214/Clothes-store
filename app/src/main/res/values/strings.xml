@@ -20,6 +20,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_payment">paymentActivity</string>
     <string name="enter_your_visa_card">enter your visa card</string>
+    <string name="happy_birth_day_to_you">Happy birth day to you</string>
+    <string name="we_hope_that_you_have_nice_day">we hope that you have nice day</string>
     <!-- TODO: Remove or change this placeholder text -->
 
 </resources>

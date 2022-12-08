@@ -16,6 +16,24 @@
             android:background="?attr/backgroundColor">
 
             <ImageButton
+                android:id="@+id/voice"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:background="@drawable/float_action_button"
+                android:elevation="8dp"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_baseline_settings_voice_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.685"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.104"
+                app:tint="?attr/editTextColor"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageButton
                 android:id="@+id/searchbarcode"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"
@@ -26,11 +44,49 @@
                 android:src="@drawable/ic_baseline_qr_code_scanner_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.894"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.98"
+                app:layout_constraintVertical_bias="0.104"
                 app:tint="?attr/editTextColor"
                 tools:ignore="SpeakableTextPresentCheck" />
+
+            <EditText
+                android:id="@+id/Search_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter the product name"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.079"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.104" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/search_n"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_background"
+                android:text="Search"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.383"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Search_name"
+                app:layout_constraintVertical_bias="0.045" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recler"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/search_n" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </layout>

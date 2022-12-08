@@ -7,7 +7,36 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Admin.AdminActivity">
+        tools:context=".Admin.AdminActivity"
+        android:background="?attr/backgroundColor">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/add2"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button_background"
+            android:padding="8dp"
+            android:text="Add Category"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/edit"
+            app:layout_constraintHorizontal_bias="0.388"
+            app:layout_constraintStart_toEndOf="@+id/delete"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.944" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/delete2"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button_background"
+            android:padding="8dp"
+            android:text="Delete Category"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/add"
+            app:layout_constraintHorizontal_bias="0.482"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.944" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -57,6 +86,19 @@
             app:layout_constraintStart_toEndOf="@+id/add"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.834" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/edit2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
+            android:padding="8dp"
+            android:text="Edit Category"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/add"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.944" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/delete"

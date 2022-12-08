@@ -1,18 +1,24 @@
 package com.youssef.cloath_store.Admin;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
-import com.youssef.cloath_store.databinding.ActivityAddItemBinding;
+import com.youssef.cloath_store.Constants;
+import com.youssef.cloath_store.R;
+import com.youssef.cloath_store.authintication.SigninActivity;
 import com.youssef.cloath_store.databinding.ActivityAdminBinding;
-import com.youssef.cloath_store.databinding.ActivityReportBinding;
 import com.youssef.cloath_store.models.Product;
 import com.youssef.cloath_store.roomdatabase.MyRoomDatabase;
 import com.youssef.cloath_store.roomdatabase.ProductDao;
@@ -23,10 +29,32 @@ public class AdminActivity extends AppCompatActivity {
     PieChart pieChart;
     ActivityAdminBinding binding;
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.setting,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.log_out)
+        {
+            Intent i = new Intent(this, SigninActivity.class);
+            SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref",MODE_PRIVATE);
+            sharedPreferences.edit().putInt(Constants.RememberValue,-1).apply();
+            startActivity(i);
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         binding= ActivityAdminBinding.inflate(getLayoutInflater());
+        getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.actionbar));
+        getWindow().setStatusBarColor(ContextCompat.getColor(this,android.R.color.transparent));
+        getWindow().setBackgroundDrawable(getDrawable(R.drawable.actionbar));
         setContentView(binding.getRoot());
 
 
@@ -64,6 +92,22 @@ public class AdminActivity extends AppCompatActivity {
             });
         }).start();
 
+        binding.delete2.setOnClickListener(view -> {
+            Intent i = new Intent(this, DeleteCatActivity.class);
+            startActivity(i);
+
+        });
+        binding.edit2.setOnClickListener(view -> {
+            Intent i = new Intent(this, EditCatActivity.class);
+            startActivity(i);
+
+        });
+        binding.add2.setOnClickListener(view -> {
+            Intent i = new Intent(this, AddCatActivity.class);
+            startActivity(i);
+
+        });
+
 
 
 
@@ -71,28 +115,28 @@ public class AdminActivity extends AppCompatActivity {
         binding.delete.setOnClickListener(view -> {
             Intent i = new Intent(this,DeleteActivity.class);
             startActivity(i);
-            finish();
+
         });
 
         //move to Edit Page
         binding.edit.setOnClickListener(view -> {
             Intent i = new Intent(this,EditItemActivity.class);
             startActivity(i);
-            finish();
+
         });
 
         //move to additem Page
         binding.add.setOnClickListener(view -> {
             Intent i = new Intent(this,AddItemActivity.class);
             startActivity(i);
-            finish();
+
         });
 
         //move to report Page
         binding.generate.setOnClickListener(view -> {
             Intent i = new Intent(this,ReportActivity.class);
             startActivity(i);
-            finish();
+
         });
 
 
