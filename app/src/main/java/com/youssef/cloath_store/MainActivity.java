@@ -1,5 +1,6 @@
 package com.youssef.cloath_store;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -25,14 +26,15 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.actionbar));
         getWindow().setStatusBarColor(ContextCompat.getColor(this,android.R.color.transparent));
         getWindow().setBackgroundDrawable(getDrawable(R.drawable.actionbar));
-
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container_view_tag, new HomeFragment()).commit();
         getSupportFragmentManager().addOnBackStackChangedListener(() -> {
             if(getSupportFragmentManager().findFragmentById(R.id.fragment_container_view_tag) instanceof ProductFragment)
                 binding.bottomnav.setVisibility(View.GONE);
             else
                 binding.bottomnav.setVisibility(View.VISIBLE);
         });
+        if(getSupportFragmentManager().findFragmentById(R.id.fragment_container_view_tag) instanceof ProductFragment){
+            binding.bottomnav.setVisibility(View.GONE);
+        }
         binding.bottomnav.setSelectedItemId(R.id.home);
         binding.bottomnav.setOnItemSelectedListener(item -> {
             Fragment F = null;
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_view_tag,F).commit();
             return true;
         });
-
     }
+
+
 }
