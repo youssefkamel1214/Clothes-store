@@ -22,9 +22,10 @@ public interface ProductDao{
     void insertll(List<Product>products);
     @Delete
     void delete(Product product);
-
-      @Update
-      void updateProduct(Product product);
+    @Update
+    void updateProduct(Product product);
+    @Query("update product  set amountsold=amountsold+:value , count =count-:value where uid like :id")
+    void updatebyidandvalue(int id,int value);
 
     @Query("SELECT * FROM product WHERE uid LIKE :uid LIMIT 1")
     Product findById(int uid);
@@ -33,7 +34,7 @@ public interface ProductDao{
      List<Product> get_top_10();
     @Query("SELECT * FROM product WHERE title LIKE :title")
     List<Product> findByTitle(String title);
-    @Query("SELECT * FROM product where category =:catgory")
+    @Query("SELECT * FROM product where category =:catgory and count > 0")
     List<Product> findByCatogy(String catgory);
     @Query("Select sum(amountsold) from product")
     int get_toatal_sales();

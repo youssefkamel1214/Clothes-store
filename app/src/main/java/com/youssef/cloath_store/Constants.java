@@ -15,6 +15,7 @@ public class Constants {
     public static int camera_permissios=102;
     public static int Pick_Image_Code=1001;
     public static String usershoppingcard="userShoppingCard";
+    public static int locationpremssion=101;
 
     public static  byte[] getBytes(Uri uri, Context c) throws IOException {
         InputStream inputStream =   c.getContentResolver().openInputStream(uri);

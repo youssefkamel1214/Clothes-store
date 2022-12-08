@@ -2,6 +2,7 @@ package com.youssef.cloath_store.card;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -21,6 +22,7 @@ import com.youssef.cloath_store.databinding.FragmentShoppingCartBinding;
 import com.youssef.cloath_store.models.Product;
 import com.youssef.cloath_store.models.Sales;
 import com.youssef.cloath_store.models.Shoppingcard;
+import com.youssef.cloath_store.payment.paymentActivity;
 import com.youssef.cloath_store.roomdatabase.MyRoomDatabase;
 import com.youssef.cloath_store.roomdatabase.ProductDao;
 import com.youssef.cloath_store.roomdatabase.SalesDao;
@@ -96,7 +98,7 @@ public class Shopping_cart_Fragment extends Fragment {
                         Calendar calendar=Calendar.getInstance();
                         calendar=Constants.return_hour_to_zero(calendar);
                         salesDao.insert(new Sales(userid,shoppingcard.getProudctid(),shoppingcard.getCount(),calendar ));
-
+                        productDao.updatebyidandvalue(shoppingcard.getProudctid(),shoppingcard.getCount());
                     });
                     shoppingDao.delete(shoppingcards);
                     shoppingcards.clear();
@@ -104,11 +106,13 @@ public class Shopping_cart_Fragment extends Fragment {
                         productCardAdapter.clear();
                         binding.Total.setText("10 Egp");
                         binding.itemTotal.setText("0 Egp");
+                        Intent intent=new Intent(getActivity(), paymentActivity.class);
+                        startActivity(intent);
                     });
 
                 }).start();
             }else {
-                Toast.makeText(getContext(),"fadya yabn ws5a", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(),"there no data ", Toast.LENGTH_LONG).show();
             }
         });
         binding.recylercard.setLayoutManager(new LinearLayoutManager(getContext()));

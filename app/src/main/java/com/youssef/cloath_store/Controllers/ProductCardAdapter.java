@@ -55,6 +55,8 @@ public class ProductCardAdapter extends RecyclerView.Adapter<ProductCardAdapter.
           holder.binding.imageview.setImageBitmap(bmp);
           holder.binding.count.setText(Integer.toString( shoppingcard.getCount()));
           holder.binding.add.setOnClickListener(view ->{
+              if(shoppingcard.getCount()==product.getCount())
+                  return;
               shoppingcard.setCount(shoppingcard.getCount()+1);
               holder.binding.count.setText(Integer.toString( shoppingcard.getCount()));
               callback.call(list);
