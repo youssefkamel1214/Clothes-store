@@ -2,32 +2,20 @@ package com.youssef.cloath_store;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.RoomDatabase;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.util.Log;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.youssef.cloath_store.databinding.ActivityTest2Binding;
 import com.youssef.cloath_store.models.Product;
-import com.youssef.cloath_store.models.Rating;
-import com.youssef.cloath_store.models.Sales;
-import com.youssef.cloath_store.models.User;
 import com.youssef.cloath_store.roomdatabase.MyRoomDatabase;
 import com.youssef.cloath_store.roomdatabase.ProductDao;
-import com.youssef.cloath_store.roomdatabase.RatingDao;
-import com.youssef.cloath_store.roomdatabase.SalesDao;
-import com.youssef.cloath_store.roomdatabase.UserDao;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.List;
 
 public class TestActivity2 extends AppCompatActivity {
     ActivityTest2Binding binding;

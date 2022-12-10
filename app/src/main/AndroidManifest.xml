@@ -19,6 +19,13 @@
         android:theme="@style/Theme.Cloath_store"
         tools:targetApi="31">
         <activity
+            android:name=".FeedbackandRatingActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Admin.EditCatActivity"
             android:exported="false">
             <meta-data

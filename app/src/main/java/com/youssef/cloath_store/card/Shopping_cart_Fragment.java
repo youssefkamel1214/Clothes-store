@@ -90,6 +90,7 @@ public class Shopping_cart_Fragment extends Fragment {
                 binding.Total.setText(Double.toString(total+10)+" Egp");
             });
         }).start();
+
         binding.button.setOnClickListener(view -> {
             if(!shoppingcards.isEmpty()){
                 SalesDao salesDao=MyRoomDatabase.getInstance(getContext()).salesDao();
@@ -107,11 +108,14 @@ public class Shopping_cart_Fragment extends Fragment {
                         binding.Total.setText("10 Egp");
                         binding.itemTotal.setText("0 Egp");
                         Intent intent=new Intent(getActivity(), paymentActivity.class);
+                        intent.putExtra("Uid",userid);
                         startActivity(intent);
                     });
 
                 }).start();
-            }else {
+            }
+
+            else {
                 Toast.makeText(getContext(),"there no data ", Toast.LENGTH_LONG).show();
             }
         });

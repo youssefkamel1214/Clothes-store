@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.youssef.cloath_store.Constants;
+import com.youssef.cloath_store.FeedbackandRatingActivity;
 import com.youssef.cloath_store.R;
 import com.youssef.cloath_store.databinding.ActivityPaymentBinding;
 
@@ -58,8 +60,13 @@ public class paymentActivity extends FragmentActivity implements OnMapReadyCallb
                 Toast.makeText(this,"please pick location",Toast.LENGTH_LONG).show();
                 return;
             }
-            Toast.makeText(this,"we take your location stay tunned",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"The Order arrived",Toast.LENGTH_LONG).show();
+            Intent i =  new Intent(this, FeedbackandRatingActivity.class);
+            int id = getIntent().getIntExtra("Uid",-1);
+            i.putExtra("Uid",id);
+            startActivity(i);
             finish();
+
         });
     }
 

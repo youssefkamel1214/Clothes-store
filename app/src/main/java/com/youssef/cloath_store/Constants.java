@@ -17,6 +17,7 @@ public class Constants {
     public static String usershoppingcard="userShoppingCard";
     public static int locationpremssion=101;
     public static int voice=103;
+    public static String idindex = "id";
 
     public static  byte[] getBytes(Uri uri, Context c) throws IOException {
         InputStream inputStream =   c.getContentResolver().openInputStream(uri);

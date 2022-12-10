@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.youssef.cloath_store.Constants;
+import com.youssef.cloath_store.FeedbackandRatingActivity;
 import com.youssef.cloath_store.R;
 import com.youssef.cloath_store.databinding.ActivityProductDescriptionBinding;
 import com.youssef.cloath_store.models.Product;
@@ -55,6 +57,13 @@ public class Product_DescriptionActivity extends AppCompatActivity {
             finish();
             Toast.makeText(this,"7atnha ya abn ws5a",Toast.LENGTH_LONG).show();
         });
+        binding.button4.setOnClickListener(View -> {
+            Intent i = new Intent(this, FeedbackandRatingActivity.class);
+            i.putExtra("Uid",Uid);
+            i.putExtra(Constants.idindex,Pid);
+            startActivity(i);
+        });
+
         handletextavailablity();
     }
 
