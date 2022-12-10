@@ -1,4 +1,4 @@
-package com.youssef.cloath_store;
+package com.youssef.cloath_store.Feedback;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.youssef.cloath_store.Constants;
+import com.youssef.cloath_store.R;
 import com.youssef.cloath_store.databinding.ActivityFeedbackandRatingBinding;
 import com.youssef.cloath_store.models.OrderFeedback;
 import com.youssef.cloath_store.models.ProductFeedback;

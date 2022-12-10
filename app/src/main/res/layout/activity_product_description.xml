@@ -76,15 +76,16 @@
                             android:layout_height="@dimen/_30sdp"
                             android:src="@drawable/ic_baseline_star_24"
                             />
+
                         <TextView
+                            android:id="@+id/rating"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            android:textSize="@dimen/_10sdp"
                             android:text="4.6"
                             android:textAlignment="center"
-                            android:textColor="?attr/editTextColor">
-                        </TextView>
+                            android:textColor="?attr/editTextColor"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold"></TextView>
 
                     </LinearLayout>
                 </LinearLayout>

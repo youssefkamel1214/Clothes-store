@@ -9,19 +9,18 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 import com.youssef.cloath_store.Constants;
-import com.youssef.cloath_store.FeedbackandRatingActivity;
+import com.youssef.cloath_store.Feedback.FeedbackandRatingActivity;
 import com.youssef.cloath_store.R;
 import com.youssef.cloath_store.databinding.ActivityProductDescriptionBinding;
 import com.youssef.cloath_store.models.Product;
 import com.youssef.cloath_store.models.Shoppingcard;
 import com.youssef.cloath_store.roomdatabase.MyRoomDatabase;
 import com.youssef.cloath_store.roomdatabase.ProductDao;
+import com.youssef.cloath_store.roomdatabase.RatingProductDao;
 import com.youssef.cloath_store.roomdatabase.ShoppingDao;
-import com.youssef.cloath_store.roomdatabase.UserDao;
 
 public class Product_DescriptionActivity extends AppCompatActivity {
     ActivityProductDescriptionBinding binding;
@@ -39,15 +38,17 @@ public class Product_DescriptionActivity extends AppCompatActivity {
 
         ProductDao prod = MyRoomDatabase.getInstance(this).productDao();
         SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref",MODE_PRIVATE);
-
+        RatingProductDao ratingProductDao=MyRoomDatabase.getInstance(this).ratingDao();
         Pid = getIntent().getIntExtra("id", -1);
         Uid = sharedPreferences.getInt("userid", -1);
         new Thread(() -> {
             Product p = prod.findById(Pid);
+            float rate=ratingProductDao.getavg(Pid);
             Bitmap bmp = BitmapFactory.decodeByteArray(p.getImage(),0,p.getImage().length);
             runOnUiThread(() -> {
                 binding.imgProduct.setImageBitmap(bmp);
                 binding.ProductName.setText(p.getTitle());
+                binding.rating.setText(Float.toString(rate));
             });
         }).start();
         binding.AddToCart.setOnClickListener(view -> {
@@ -55,7 +56,7 @@ public class Product_DescriptionActivity extends AppCompatActivity {
             ShoppingDao shoppingDao=MyRoomDatabase.getInstance(this).shoppingDao();
             new Thread(()->shoppingDao.insert(shoppingcard)).start();
             finish();
-            Toast.makeText(this,"7atnha ya abn ws5a",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"added to shopping cart",Toast.LENGTH_LONG).show();
         });
         binding.button4.setOnClickListener(View -> {
             Intent i = new Intent(this, FeedbackandRatingActivity.class);

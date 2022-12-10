@@ -80,7 +80,13 @@ public class EditItemActivity extends AppCompatActivity {
         prodedit.setTitle(title);
         prodedit.setPrice(price);
         prodedit.setCategory(Category);
-        new Thread(()->prodeditdao.updateProduct(prodedit)).start();
+        new Thread(()->{
+            prodeditdao.updateProduct(prodedit);
+            runOnUiThread(()->{
+                Toast.makeText(this,"catgory name updated", Toast.LENGTH_LONG).show();
+                finish();
+            });
+        }).start();
     }
 
 }

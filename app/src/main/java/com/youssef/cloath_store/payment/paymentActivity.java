@@ -8,7 +8,6 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Location;
 import android.os.Bundle;
 import android.os.Looper;
 import android.widget.Toast;
@@ -26,11 +25,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.youssef.cloath_store.Constants;
-import com.youssef.cloath_store.FeedbackandRatingActivity;
+import com.youssef.cloath_store.Feedback.FeedbackandRatingActivity;
 import com.youssef.cloath_store.R;
 import com.youssef.cloath_store.databinding.ActivityPaymentBinding;
-
-import java.util.Locale;
 
 public class paymentActivity extends FragmentActivity implements OnMapReadyCallback {
 

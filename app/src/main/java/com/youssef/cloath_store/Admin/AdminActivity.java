@@ -138,7 +138,10 @@ public class AdminActivity extends AppCompatActivity {
             startActivity(i);
 
         });
-
+       binding.feedbackreport.setOnClickListener(view -> {
+           Intent i = new Intent(this, FeedbackReportActivity.class);
+           startActivity(i);
+       });
 
 
 

@@ -88,7 +88,7 @@ public class SearchFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==Constants.voice&&resultCode==getActivity().RESULT_OK){
             ArrayList<String>text=data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-            binding.searchN.setText(text.get(0));
+            binding.SearchName.setText(text.get(0));
             search(text.get(0));
         }
     }
