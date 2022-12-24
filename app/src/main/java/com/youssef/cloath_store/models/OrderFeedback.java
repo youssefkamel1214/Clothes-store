@@ -11,14 +11,17 @@ public class OrderFeedback {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
-
     @ColumnInfo(name = "userid")
     private int userid;
-
 
     @ColumnInfo(name = "date")
     private Calendar date;
 
+    @ColumnInfo(name = "rate")
+    private int rate;
+
+    @ColumnInfo(name = "feedback")
+    private String feedback;
     public OrderFeedback(int userid, Calendar date, int rate, String feedback) {
         this.userid = userid;
         this.date = date;
@@ -34,11 +37,6 @@ public class OrderFeedback {
         return id;
     }
 
-    @ColumnInfo(name = "rate")
-    private int rate;
-
-    @ColumnInfo(name = "feedback")
-    private String feedback;
 
     public int getUserid() {
         return userid;

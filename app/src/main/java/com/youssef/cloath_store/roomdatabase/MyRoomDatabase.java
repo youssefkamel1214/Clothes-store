@@ -26,9 +26,7 @@ public abstract class MyRoomDatabase extends RoomDatabase{
     public abstract ShoppingDao shoppingDao();
     public abstract CategoriesDao categoriesDao();
     public abstract OrderDao orderDao();
-
     private static volatile MyRoomDatabase INSTANCE;
-
     public static MyRoomDatabase getInstance(Context context){
         if(INSTANCE == null){
             synchronized (MyRoomDatabase.class){

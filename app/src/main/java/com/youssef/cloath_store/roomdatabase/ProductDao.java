@@ -22,8 +22,10 @@ public interface ProductDao{
     void insertll(List<Product>products);
     @Delete
     void delete(Product product);
+
     @Update
     void updateProduct(Product product);
+
     @Query("update product  set amountsold=amountsold+:value , count =count-:value where uid like :id")
     void updatebyidandvalue(int id,int value);
 
@@ -46,4 +48,5 @@ public interface ProductDao{
     @Query("update product set category=:s2 where category=:s1")
     void editcatbynames(String s2, String s1);
     @Query("SELECT * FROM product where title like :name  and count > 0")
-    List<Product> findByname(String name);}
+    List<Product> findByname(String name);
+}

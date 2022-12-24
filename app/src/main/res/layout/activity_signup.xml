@@ -71,6 +71,7 @@
             android:layout_marginHorizontal="@dimen/_10sdp"
             android:hint="@string/password"
             android:textSize="25sp"
+            android:inputType="textPassword"
             app:layout_constraintBottom_toTopOf="@+id/phone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
